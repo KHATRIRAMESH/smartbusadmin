@@ -34,8 +34,8 @@ export const BusList = ({ buses, onRefresh }: BusListProps) => {
             <TableRow key={bus.id}>
               <TableCell className="font-medium">{bus.busNumber}</TableCell>
               <TableCell>{bus.capacity}</TableCell>
-              <TableCell>{bus.driverName}</TableCell>
-              <TableCell>{bus.driverContact}</TableCell>
+              <TableCell>{bus.driver?.name || 'Not Assigned'}</TableCell>
+              <TableCell>{bus.driver?.phone || 'N/A'}</TableCell>
               <TableCell>
                 <span className={`px-2 py-1 rounded-full text-xs ${
                   bus.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
