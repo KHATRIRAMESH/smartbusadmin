@@ -23,6 +23,11 @@ export const DashboardStats = ({ stats }: DashboardStatsProps) => {
       description: "Fleet vehicles",
     },
     {
+      title: "Total Drivers",
+      value: stats.totalDrivers,
+      description: "Bus drivers",
+    },
+    {
       title: "Active Routes",
       value: stats.totalRoutes,
       description: "Transportation routes",
@@ -40,7 +45,7 @@ export const DashboardStats = ({ stats }: DashboardStatsProps) => {
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {statCards.map((stat) => (
         <Card key={stat.title}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

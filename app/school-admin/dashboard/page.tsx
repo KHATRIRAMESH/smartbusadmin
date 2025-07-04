@@ -51,6 +51,13 @@ export default function SchoolAdminDashboard() {
       return; // Wait for initialization
     }
     
+    console.log("Auth state:", {
+      isAuthenticated,
+      hasUser: !!user,
+      userRole: user?.role,
+      hasToken: !!accessToken
+    });
+    
     if (!isAuthenticated || !user || !accessToken) {
       console.log("Redirecting to login - not authenticated");
       router.replace("/");

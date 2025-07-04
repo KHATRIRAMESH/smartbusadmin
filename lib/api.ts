@@ -1,3 +1,5 @@
+import { useAuthStore } from "@/store/authStore";
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 class ApiService {
@@ -13,9 +15,17 @@ class ApiService {
   ): Promise<T> {
     const url = `${this.baseURL}${endpoint}`;
     
+    // Get the access token from the auth store
+    const accessToken = useAuthStore.getState().accessToken;
+    
+    if (!accessToken) {
+      throw new Error("No token provided");
+    }
+
     const config: RequestInit = {
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`,
         ...options.headers,
       },
       credentials: 'include', // Include cookies for authentication
