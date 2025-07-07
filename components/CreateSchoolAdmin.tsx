@@ -30,7 +30,7 @@ export const CreateSchoolAdmin = ({
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [phone, setPhone] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
   const [address, setAddress] = useState("");
   const [schoolId, setSchoolId] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -63,7 +63,7 @@ export const CreateSchoolAdmin = ({
             name,
             email,
             password,
-            phone,
+            contactNumber,
             address,
             schoolId,
           }),
@@ -81,7 +81,7 @@ export const CreateSchoolAdmin = ({
         setName("");
         setEmail("");
         setPassword("");
-        setPhone("");
+        setContactNumber("");
         setAddress("");
         setSchoolId("");
       } else {
@@ -160,12 +160,12 @@ export const CreateSchoolAdmin = ({
             </div>
           </div>
           <div className="space-y-2">
-            <Label htmlFor="phone">Phone</Label>
+            <Label htmlFor="contactNumber">Contact Number</Label>
             <Input
-              id="phone"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="Enter phone number"
+              id="contactNumber"
+              value={contactNumber}
+              onChange={(e) => setContactNumber(e.target.value)}
+              placeholder="Enter contact number"
             />
           </div>
           <div className="space-y-2">

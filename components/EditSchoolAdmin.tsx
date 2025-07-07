@@ -28,7 +28,7 @@ export const EditSchoolAdmin = ({
 }: EditSchoolAdminProps) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
   const [address, setAddress] = useState("");
   const [schoolId, setSchoolId] = useState("");
   const [schools, setSchools] = useState<School[]>([]);
@@ -40,7 +40,7 @@ export const EditSchoolAdmin = ({
     if (admin) {
       setName(admin.name);
       setEmail(admin.email);
-      setPhone(admin.phone || "");
+      setContactNumber(admin.contactNumber || "");
       setAddress(admin.address || "");
       setSchoolId(admin.schoolId);
     }
@@ -99,7 +99,7 @@ export const EditSchoolAdmin = ({
           body: JSON.stringify({
             name,
             email,
-            phone,
+            contactNumber,
             address,
             schoolId,
           }),
@@ -159,13 +159,13 @@ export const EditSchoolAdmin = ({
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="phone">Phone (Optional)</Label>
+            <Label htmlFor="contactNumber">Contact Number (Optional)</Label>
             <Input
-              id="phone"
+              id="contactNumber"
               type="tel"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
-              placeholder="Enter phone number"
+              value={contactNumber}
+              onChange={(e) => setContactNumber(e.target.value)}
+              placeholder="Enter contact number"
             />
           </div>
           <div className="space-y-2">

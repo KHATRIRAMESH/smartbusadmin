@@ -21,7 +21,7 @@ class ApiService {
     if (!accessToken) {
       throw new Error("No token provided");
     }
-
+    
     const config: RequestInit = {
       headers: {
         'Content-Type': 'application/json',

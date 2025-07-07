@@ -27,7 +27,7 @@ export interface SchoolAdmin {
   name: string;
   email: string;
   schoolId: string;
-  phone?: string;
+  contactNumber?: string;
   address?: string;
   school: School;
   createdAt: string;

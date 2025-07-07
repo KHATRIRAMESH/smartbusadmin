@@ -64,7 +64,7 @@ export const SchoolAdminList = ({ schoolAdmins, onRefresh }: SchoolAdminListProp
             <TableHead>Name</TableHead>
             <TableHead>Email</TableHead>
             <TableHead>School</TableHead>
-            <TableHead>Phone</TableHead>
+            <TableHead>Contact Number</TableHead>
             <TableHead>Created</TableHead>
             <TableHead>Actions</TableHead>
           </TableRow>
@@ -75,7 +75,7 @@ export const SchoolAdminList = ({ schoolAdmins, onRefresh }: SchoolAdminListProp
               <TableCell className="font-medium">{admin.name}</TableCell>
               <TableCell>{admin.email}</TableCell>
               <TableCell>{admin.school?.name || "N/A"}</TableCell>
-              <TableCell>{admin.phone || "N/A"}</TableCell>
+              <TableCell>{admin.contactNumber || "N/A"}</TableCell>
               <TableCell>
                 {new Date(admin.createdAt).toLocaleDateString()}
               </TableCell>

@@ -1,177 +1,210 @@
-# SmartBus Admin Panel
+# SmartBus Admin Dashboard
 
-Independent Next.js admin panel for the SmartBus school bus management system.
+A Next.js web application for managing the SmartBus school bus tracking system.
 
-## 🚀 Quick Start
+## Features
 
-### Prerequisites
-- Node.js 18+
-- API server running and accessible
-- Environment variables configured
+- Real-time bus tracking dashboard
+- School management
+- Route planning and optimization
+- Driver management
+- Parent and student management
+- Analytics and reporting
+- Role-based access control
+- Dark mode support
 
-### Installation
-```bash
-npm install
-```
+## Tech Stack
 
-### Development
-```bash
-npm run dev
-```
+- Next.js 14 with App Router
+- TypeScript
+- Tailwind CSS
+- Shadcn UI
+- Zustand for state management
+- Socket.IO for real-time updates
+- React Query for data fetching
+- React Hook Form for forms
+- Zod for validation
+- Recharts for analytics
 
-### Production Build
-```bash
-npm run build
-npm start
-```
-
-## 📋 Environment Variables
-
-Create a `.env.local` file in the root directory:
-
-```env
-# API Server Configuration
-NEXT_PUBLIC_API_URL=https://your-api-server.com
-NEXT_PUBLIC_SOCKET_URL=wss://your-api-server.com
-
-# Authentication
-NEXT_PUBLIC_JWT_SECRET=your_jwt_secret_here
-
-# Google Maps API (for admin panel maps)
-NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-
-# Environment
-NODE_ENV=production
-```
-
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 smartbusadmin/
-├── app/                    # Next.js App Router
-│   ├── dashboard/         # Super admin dashboard
-│   ├── school-admin/      # School admin dashboard
-│   └── page.tsx          # Landing page
-├── components/            # Reusable components
-│   ├── ui/               # UI components (Radix UI)
-│   ├── auth-screen.tsx   # Authentication screen
-│   └── ...
-├── lib/                  # Utilities and helpers
-├── store/                # State management (Zustand)
-├── types/                # TypeScript type definitions
-└── public/               # Static assets
+├── app/                # Next.js app router pages
+├── components/         # React components
+├── lib/               # Utility functions and configs
+├── store/             # Global state management
+├── types/             # TypeScript definitions
+└── public/            # Static assets
 ```
 
-## 🎨 UI Components
+## Getting Started
 
-Built with:
-- **Radix UI** - Accessible component primitives
-- **Tailwind CSS** - Utility-first CSS framework
-- **Lucide React** - Beautiful icons
-- **Zustand** - Lightweight state management
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Copy `.env.example` to `.env.local` and update the values:
+   ```bash
+   cp env.example .env.local
+   ```
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-## 🔧 Development
+## Environment Variables
 
-### Code Quality
-```bash
-npm run lint
-npm run lint:fix
+```env
+# API Configuration
+NEXT_PUBLIC_API_URL=https://api.smartbus.com
+NEXT_PUBLIC_SOCKET_URL=wss://api.smartbus.com
+
+# Authentication
+NEXT_PUBLIC_AUTH_URL=https://auth.smartbus.com
+NEXTAUTH_SECRET=your_nextauth_secret
+
+# Maps Configuration
+NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+
+# Analytics
+NEXT_PUBLIC_GA_ID=your_google_analytics_id
 ```
 
-### Build Analysis
-```bash
-npm run analyze
-```
+## Available Scripts
 
-### Static Export
-```bash
-npm run export
-```
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run test` - Run tests
+- `npm run test:watch` - Run tests in watch mode
+- `npm run type-check` - Run TypeScript checks
 
-## 📦 Deployment
+## Features in Detail
 
-### Vercel (Recommended)
-```bash
-npm run deploy:vercel
-```
+### Dashboard
+- Real-time bus tracking map
+- Active buses overview
+- Recent alerts and notifications
+- Key metrics and statistics
+- Quick actions menu
 
-### Netlify
-```bash
-npm run deploy:netlify
-```
+### School Management
+- School registration
+- Campus management
+- Staff administration
+- Resource allocation
+- Schedule management
 
-### Docker
-```bash
-docker build -t smartbus-admin .
-docker run -p 3000:3000 smartbus-admin
-```
+### Route Management
+- Route creation and editing
+- Stop management
+- Route optimization
+- Schedule planning
+- Distance and time calculations
 
-### Manual Server
-1. Build the application: `npm run build`
-2. Start the server: `npm start`
-3. Configure reverse proxy (Nginx/Apache)
+### Driver Management
+- Driver profiles
+- License management
+- Schedule assignment
+- Performance tracking
+- Document storage
 
-## 🔒 Security
+### Student Management
+- Student registration
+- Bus assignment
+- Attendance tracking
+- Parent communication
+- Route assignment
 
-- Environment-based configuration
-- JWT token management
-- CORS protection
-- Input validation
-- HTTPS only in production
+### Analytics
+- Usage statistics
+- Route efficiency
+- Driver performance
+- Attendance reports
+- Custom report generation
 
-## 📱 Features
+## Folder Structure Details
 
-### Super Admin Dashboard
-- School management
-- Administrator management
-- System statistics
-- Real-time monitoring
+### `/app`
+- Page components
+- API routes
+- Layouts
+- Error boundaries
 
-### School Admin Dashboard
-- Bus management
-- Route management
-- Student management
-- Real-time tracking
+### `/components`
+- UI components
+- Forms
+- Tables
+- Charts
+- Maps
 
-## 🔗 API Integration
+### `/lib`
+- API client
+- Authentication
+- Validation
+- Utils
+- Constants
 
-The admin panel communicates with the SmartBus API server:
+### `/store`
+- Global state
+- Context providers
+- Reducers
+- Actions
 
-- **Authentication**: JWT-based auth
-- **Real-time**: WebSocket connections
-- **REST API**: CRUD operations
-- **Error Handling**: Comprehensive error states
+### `/types`
+- TypeScript interfaces
+- Type definitions
+- API types
+- Enums
 
-## 🎯 Performance
-
-- **Next.js 15** with App Router
-- **React 19** with concurrent features
-- **TypeScript** for type safety
-- **Optimized builds** with tree shaking
-- **Image optimization** with Next.js Image
-
-## 🧪 Testing
-
-```bash
-# Add testing framework of your choice
-npm install --save-dev jest @testing-library/react
-```
-
-## 📊 Analytics
-
-Recommended integrations:
-- **Google Analytics** - User behavior
-- **Sentry** - Error tracking
-- **Vercel Analytics** - Performance monitoring
-
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
-2. Create feature branch
-3. Make changes
-4. Run tests and linting
-5. Submit pull request
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-## 📄 License
+## Testing
 
-MIT License
+Run the test suite:
+
+```bash
+npm test
+```
+
+Run tests with coverage:
+
+```bash
+npm run test:coverage
+```
+
+## Building for Production
+
+1. Update environment variables for production
+2. Build the application:
+   ```bash
+   npm run build
+   ```
+3. Start the production server:
+   ```bash
+   npm start
+   ```
+
+### Docker Deployment
+
+1. Build the Docker image:
+   ```bash
+   docker build -t smartbus-admin .
+   ```
+2. Run the container:
+   ```bash
+   docker run -p 3000:3000 smartbus-admin
+   ```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

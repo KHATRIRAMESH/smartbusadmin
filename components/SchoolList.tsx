@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { School } from "@/types/types";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
+import { EditSchool } from "./EditSchool";
 
 interface SchoolListProps {
   schools: School[];
@@ -8,6 +10,8 @@ interface SchoolListProps {
 }
 
 export const SchoolList = ({ schools, onRefresh }: SchoolListProps) => {
+  const [editingSchool, setEditingSchool] = useState<School | null>(null);
+
   if (schools.length === 0) {
     return (
       <div className="text-center py-8 text-gray-500">
@@ -38,7 +42,11 @@ export const SchoolList = ({ schools, onRefresh }: SchoolListProps) => {
                 {new Date(school.createdAt).toLocaleDateString()}
               </TableCell>
               <TableCell>
-                <Button variant="outline" size="sm">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => setEditingSchool(school)}
+                >
                   Edit
                 </Button>
               </TableCell>
@@ -46,6 +54,18 @@ export const SchoolList = ({ schools, onRefresh }: SchoolListProps) => {
           ))}
         </TableBody>
       </Table>
+
+      {editingSchool && (
+        <EditSchool
+          school={editingSchool}
+          open={!!editingSchool}
+          setOpen={() => setEditingSchool(null)}
+          onSuccess={() => {
+            onRefresh();
+            setEditingSchool(null);
+          }}
+        />
+      )}
     </div>
   );
 }; 
