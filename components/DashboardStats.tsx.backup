@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { DashboardStats as Stats } from "@/types/types";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface DashboardStatsProps {
   stats: Stats;
@@ -11,68 +11,52 @@ export const DashboardStats = ({ stats }: DashboardStatsProps) => {
       title: "Total Schools",
       value: stats.totalSchools,
       description: "Registered schools",
-      icon: "🏫",
-      color: "bg-blue-500",
     },
     {
       title: "School Admins",
       value: stats.totalSchoolAdmins,
       description: "Active administrators",
-      icon: "👥",
-      color: "bg-green-500",
     },
     {
       title: "Total Buses",
       value: stats.totalBuses,
       description: "Fleet vehicles",
-      icon: "🚌",
-      color: "bg-yellow-500",
     },
     {
       title: "Total Drivers",
       value: stats.totalDrivers,
       description: "Bus drivers",
-      icon: "👨‍✈️",
-      color: "bg-purple-500",
     },
     {
       title: "Active Routes",
       value: stats.totalRoutes,
       description: "Transportation routes",
-      icon: "🛣️",
-      color: "bg-indigo-500",
     },
     {
       title: "Students",
       value: stats.totalChildren,
       description: "Registered children",
-      icon: "👶",
-      color: "bg-pink-500",
     },
     {
       title: "Parents",
       value: stats.totalParents,
       description: "Parent accounts",
-      icon: "👨‍👩‍👧‍👦",
-      color: "bg-teal-500",
     },
   ];
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {statCards.map((stat) => (
-        <Card key={stat.title} className="hover:shadow-md transition-shadow">
+        <Card key={stat.title}>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">{stat.title}</CardTitle>
-            <span className="text-2xl">{stat.icon}</span>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
-            <p className="text-xs text-muted-foreground mt-1">{stat.description}</p>
-            <div className={`w-full h-1 ${stat.color} rounded-full mt-2 opacity-20`}></div>
+            <div className="text-2xl font-bold">{stat.value}</div>
+            <p className="text-xs text-muted-foreground">{stat.description}</p>
           </CardContent>
         </Card>
       ))}
     </div>
   );
-};
+}; 

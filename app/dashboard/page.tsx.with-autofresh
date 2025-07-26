@@ -57,6 +57,17 @@ export default function SuperAdminDashboard() {
     }
     fetchData();
   }, [isInitialized, isAuthenticated, user, accessToken, router]);
+
+  // Auto-refresh stats every 30 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (isAuthenticated && accessToken) {
+        fetchData();
+      }
+    }, 30000); // 30 seconds
+
+    return () => clearInterval(interval);
+  }, [isAuthenticated, accessToken]);
   // Show loading while auth is being initialized
   if (!isInitialized || isLoading) {
     return (
@@ -205,13 +216,6 @@ export default function SuperAdminDashboard() {
       <DashboardStats stats={dashboardStats} />
 
       {/* Action Buttons */}
-        <Button 
-          variant="outline"
-          onClick={fetchData}
-          disabled={loading}
-        >
-          {loading ? "Refreshing..." : "🔄 Refresh Data"}
-        </Button>
       <div className="flex gap-4">
         <Button onClick={() => setOpenSchoolCreate(true)}>
           Add New School
